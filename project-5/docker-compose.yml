@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  brevets:
+    build: brevets/.
+    command: flask_brevets.py
+    ports:
+      - "5001:5000"
+    depends_on:
+      - db
+    tty: true # Office hours Alex helped me with this
+    environment:
+      MONGODB_HOSTNAME: db
+
+  db:
+      image: mongo:5.0.5
